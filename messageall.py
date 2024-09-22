@@ -108,9 +108,10 @@ def message(account):
             driver.quit()
             print(f"having issue in {account}")
             return
-    except:
+    except Exception as e:
+        print(e)
         print("whole program issue")
-        return
+        exit()
 
 start_index = start_index
 max_workers = total_chromes
