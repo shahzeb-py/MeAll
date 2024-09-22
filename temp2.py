@@ -1,17 +1,10 @@
+	
 from selenium import webdriver
-from selenium.webdriver.chrome.service import Service
-
-# Set up Chrome options
 options = webdriver.ChromeOptions()
-options.add_argument("--headless")  # Run headless if you don't need a UI
-
-# Initialize the driver
-service = Service('/data/data/com.termux/files/usr/bin/chromedriver')
-driver = webdriver.Chrome(service=service, options=options)
-
-# Example: Open a webpage
-driver.get("https://www.example.com")
-print(driver.title)
-
-# Close the driver
+options.add_argument("--no-sandbox")
+options.add_argument("--disable-dev-shm-usage")
+options.add_argument("--headless=new")
+driver = webdriver.Chrome(options=options)
+driver.get("https://www.google.com")
+print("Please check screenshot image")
 driver.quit()
