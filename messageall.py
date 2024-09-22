@@ -112,8 +112,8 @@ start_index = user_input
 max_workers = user_input2
 chrome_queue = queue.Queue()
 
-
-for i in range(start_index, len(accounts)):
+ending=len(accounts)
+for i in range(start_index,ending):
     chrome_queue.put(i)
 
 def process_chrome():
