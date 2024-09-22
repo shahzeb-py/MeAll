@@ -1,20 +1,11 @@
-import time
-import sys
-
-def task_1():
-    for i in range(5):
-        sys.stdout.write(f"Task 1 running: {i + 1}/5\r")
-        sys.stdout.flush()
-        time.sleep(1)
-    print()  # Move to the next line after task 1
-
-def task_2():
-    for i in range(5):
-        sys.stdout.write(f"Task 2 running: {i + 1}/5\r")
-        sys.stdout.flush()
-        time.sleep(1)
-    print()  # Move to the next line after task 2
-
-# Running tasks
-task_1()
-task_2()
+	
+from selenium import webdriver
+options = webdriver.ChromeOptions()
+options.add_argument("--no-sandbox")
+options.add_argument("--disable-dev-shm-usage")
+options.add_argument("--headless=new")
+driver = webdriver.Chrome(options=options)
+driver.get("https://www.google.com")
+driver.save_screenshot("/sdcard/download/screenshot.png")
+print("Please check screenshot image")
+driver.quit()
