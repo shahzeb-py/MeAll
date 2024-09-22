@@ -14,6 +14,7 @@ from ids import *
 # Set logging level for selenium to WARNING to suppress INFO messages
 logging.getLogger('selenium').setLevel(logging.WARNING)
 user_input = input("start index: ")
+user_input2 = input("Total Chromes: ")
 # Define the message function
 def message(account):
     start_time = time.time()
@@ -107,8 +108,8 @@ def message(account):
         return
 
 
-start_index = 22
-max_workers = 1
+start_index = user_input
+max_workers = user_input2
 chrome_queue = queue.Queue()
 
 
