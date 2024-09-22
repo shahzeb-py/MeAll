@@ -13,8 +13,9 @@ from selenium.webdriver.support import expected_conditions as EC
 from ids import *
 # Set logging level for selenium to WARNING to suppress INFO messages
 logging.getLogger('selenium').setLevel(logging.WARNING)
-user_input = input(int("start index: "))
-user_input2 = input(int("Total Chromes: "))
+start_index = int(input("Start index: "))
+total_chromes = int(input("Total Chromes: "))
+
 # Define the message function
 def message(account):
     start_time = time.time()
