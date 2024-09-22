@@ -109,8 +109,8 @@ def message(account):
         return
 
 
-start_index = user_input
-max_workers = user_input2
+start_index = start_index
+max_workers = total_chromes
 chrome_queue = queue.Queue()
 
 ending=len(accounts)
