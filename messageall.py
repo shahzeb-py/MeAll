@@ -13,7 +13,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from ids import *
 # Set logging level for selenium to WARNING to suppress INFO messages
 logging.getLogger('selenium').setLevel(logging.WARNING)
-
+user_input = input("start index: ")
 # Define the message function
 def message(account):
     start_time = time.time()
