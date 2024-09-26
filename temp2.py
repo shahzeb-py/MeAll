@@ -1,7 +1,8 @@
-from selenium import webdriver
-options = webdriver.FirefoxOptions()
-options.add_argument("--headless")
-driver = webdriver.Firefox(options=options)
-driver.get("https://www.google.com")
-driver.save_screenshot("/sdcard/download/screenshot.png")
-driver.quit()
+from playwright.sync_api import sync_playwright
+
+with sync_playwright() as p:
+    browser = p.chromium.launch(headless=True)  # Launch headless browser
+    page = browser.new_page()
+    page.goto('https://www.facebook.com')
+    print(page.title())  # Print the page title
+    browser.close()
