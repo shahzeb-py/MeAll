@@ -5,7 +5,7 @@ import time
 
 # Set up Firefox options
 firefox_options = Options()
-firefox_options.add_argument("--headless")  # Run in headless mode if necessary
+#firefox_options.add_argument("--headless")  # Run in headless mode if necessary
 
 # Specify the path to geckodriver
 service = Service("/data/data/com.termux/files/usr/bin/geckodriver")
