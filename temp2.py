@@ -14,9 +14,9 @@ service = Service("/data/data/com.termux/files/usr/bin/geckodriver")
 driver = webdriver.Firefox(service=service, options=firefox_options)
 
 # Open a webpage
-driver.get("https://chatgpt.com/")
-time.sleep(3)  # Wait for the page to load
-
+driver.get("https://facebook.com/")
+time.sleep(10)  # Wait for the page to load
+print("okay")
 # Print the title of the page
 print(driver.title)
 
