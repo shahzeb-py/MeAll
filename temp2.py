@@ -1,10 +1,6 @@
 import time
 start_time = time.time()
-import re
-import logging
 import queue
-import random
-import time
 import concurrent.futures
 from selenium import webdriver
 from selenium.webdriver.firefox.service import Service
