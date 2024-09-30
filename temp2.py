@@ -5,6 +5,7 @@ from selenium.webdriver.common.keys import Keys
 from selenium import webdriver
 from selenium.webdriver.firefox.service import Service
 from selenium.webdriver.firefox.options import Options
+from selenium.webdriver.common.action_chains import ActionChains
 firstnam  = [
     'Aarohi', 'Abhilasha', 'Aishwarya', 'Akanksha', 'Alka', 'Amita', 'Ankita', 
     'Aparna', 'Aradhya', 'Avantika', 'Bhoomika', 'Chandni', 'Charvi', 'Chitra', 
@@ -42,7 +43,7 @@ def generate_random_indian_number_with_country_code():
 
 
 # Instantiate Service and Options inside the thread
-service = Service("/data/data/com.termux/files/usr/bin/geckodriver")
+#service = Service("/data/data/com.termux/files/usr/bin/geckodriver")
 firefox_options = Options()
 firefox_options.add_argument("--headless")
 custom_user_agent = "Mozilla/5.0 (Linux; Android 15) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.6668.69 Mobile Safari/537.36"
@@ -84,11 +85,15 @@ def Create():
     mt = random.choice(month)
     yr = random.choice(year)
     driver = webdriver.Firefox(service=service, options=firefox_options)
+    #driver = webdriver.Firefox(options=firefox_options)
+    driver.get("https://m.facebook.com/reg/#")
     try:
         driver.implicitly_wait(6)
         GetStarted= driver.find_element(By.XPATH,'//div[@aria-label="Get Started" and @role="button"]')
         GetStarted.click()
+        print("get started done")
     except:
+        print("error in get started")
         driver.quit()
         return
     try:
@@ -100,20 +105,25 @@ def Create():
         time.sleep(1)
         next = driver.find_element(By.XPATH,'//div[@aria-label="Next" and @role="button"]')
         next.click()
-    
+        print(" firtstname done")
         
-        date_input = driver.find_element(By.CSS_SELECTOR, 'input[type="date"]')
-        date_input.clear()
+        input_field = driver.find_element(By.CSS_SELECTOR, 'input[type="date"]')
+        actions = ActionChains(driver)
+        actions.move_to_element(input_field).click().perform()
+        for char in f"0{mt}{dt}{yr}":
+            actions.send_keys(char).pause(0.1)
+        actions.perform()
         time.sleep(1)
-        date_input.send_keys(f'{mt}{dt}{yr}')
-        date_input.send_keys(Keys.RETURN)
         next = driver.find_element(By.XPATH,'//div[@aria-label="Next" and @role="button"]')
         next.click()
+        
+        print(" dob done")
         female = driver.find_element(By.XPATH,'//div[@aria-label="Female"]')
         #male = driver.find_element(By.XPATH,'//div[@aria-label="Male"]')
         #gender_elements = [female, male]
         gender = female#random.choice(gender_elements)
         gender.click()
+        print(" gender done")
         next = driver.find_element(By.XPATH,'//div[@aria-label="Next" and @role="button"]')
         next.click()
         time.sleep(6)
@@ -122,7 +132,7 @@ def Create():
         Number.send_keys(f"03{third}{forth} {random_number}")
         next = driver.find_element(By.XPATH,'//div[@aria-label="Next" and @role="button"]')
         next.click()
-    
+        print(" number done")
         putpassword = driver.find_element(By.XPATH,'//input[@aria-label="Password"]')
         password=f"{fn}{yr}gf2S"
         putpassword.send_keys(password)
@@ -140,14 +150,20 @@ def Create():
     timee =random.randint(6,8)
     time.sleep(timee)
     driver.implicitly_wait(30)
-    
+    urll=driver.current_url
+    if "checkpoint" in urll:
+        print("checkpoint")
+        driver.quit()
+        return
     try:
         driver.find_element(By.XPATH,'//div[@aria-label="Continue"]').click()
+        print("continue")
     except:
             
             pass
     driver.implicitly_wait(5)
     driver.get("https://m.facebook.com/confirmemail.php?soft=hjk")
+    print("confirm")
     try:
         didNotRecieved = driver.find_element(By.LINK_TEXT,"I Didn't Receive the Code")
         didNotRecieved.click()
