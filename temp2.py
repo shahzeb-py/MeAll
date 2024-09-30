@@ -45,7 +45,7 @@ def generate_random_indian_number_with_country_code():
 service = Service("/data/data/com.termux/files/usr/bin/geckodriver")
 firefox_options = Options()
 firefox_options.add_argument("--headless")
-custom_user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36"
+custom_user_agent = "Mozilla/5.0 (Linux; Android 15) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.6668.69 Mobile Safari/537.36"
 firefox_options.set_preference("dom.webnotifications.enabled", False)
 firefox_options.set_preference("privacy.popups.showBrowserMessage", False)
 firefox_options.set_preference("browser.startup.homepage", "about:blank")
