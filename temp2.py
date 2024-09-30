@@ -65,7 +65,7 @@ def login(profile_directory):
         firefox_options.set_preference("browser.startup.homepage", "about:blank")
 
         # Optional: Run Firefox in headless mode (uncomment to use)
-        # firefox_options.headless = True
+        firefox_options.headless = True
 
         # Set up the Firefox driver
         service = Service('/data/data/com.termux/files/usr/bin/geckodriver')  # Adjust the path as necessary
