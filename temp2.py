@@ -43,7 +43,7 @@ def generate_random_indian_number_with_country_code():
 
 
 # Instantiate Service and Options inside the thread
-#service = Service("/data/data/com.termux/files/usr/bin/geckodriver")
+service = Service("/data/data/com.termux/files/usr/bin/geckodriver")
 firefox_options = Options()
 firefox_options.add_argument("--headless")
 custom_user_agent = "Mozilla/5.0 (Linux; Android 15) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.6668.69 Mobile Safari/537.36"
