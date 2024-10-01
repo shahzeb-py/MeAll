@@ -31,7 +31,7 @@ month = ['1', '2', '3', '4', '5', '6', '7','8', '9', '10', '11', '12']
 year = ['1998','1999','1997','2000','2001']
 
 def UserAgentss():
-    user_agents =["Mozilla/5.0 (Linux; Android 13; SM-A515F) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.6478.57 Mobile Safari/537.36"]
+    user_agents =["Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Mobile Safari/537.36"]
     current_user_agent =random.choice(user_agents)
     return current_user_agent
 def generate_random_indian_number_with_country_code():
@@ -46,7 +46,7 @@ def generate_random_indian_number_with_country_code():
 service = Service("/data/data/com.termux/files/usr/bin/geckodriver")
 firefox_options = Options()
 firefox_options.add_argument("--headless")
-custom_user_agent = "Mozilla/5.0 (Linux; Android 15) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.6668.69 Mobile Safari/537.36"
+custom_user_agent = "Mozilla/5.0 (Android 10; Mobile; rv:130.0) Gecko/130.0 Firefox/130.0"
 firefox_options.set_preference("dom.webnotifications.enabled", False)
 firefox_options.set_preference("privacy.popups.showBrowserMessage", False)
 firefox_options.set_preference("browser.startup.homepage", "about:blank")
@@ -129,7 +129,7 @@ def Create():
         time.sleep(6)
         Number= driver.find_element(By.XPATH,'//input[@aria-label="Mobile number"]')
         Number.click()
-        Number.send_keys(f"03{third}{forth} {random_number}")
+        Number.send_keys(f"03{1}{5}{random_number}")
         next = driver.find_element(By.XPATH,'//div[@aria-label="Next" and @role="button"]')
         next.click()
         print(" number done")
@@ -148,39 +148,32 @@ def Create():
     agreeterms=driver.find_element(By.XPATH,'//div[@aria-label="I agree"]')
     agreeterms.click()
     timee =random.randint(6,8)
-    time.sleep(timee)
-    driver.implicitly_wait(30)
+    time.sleep(20)
+    driver.refresh()
     urll=driver.current_url
     if "checkpoint" in urll:
         print("checkpoint")
         driver.quit()
         return
     try:
+        driver.implicitly_wait(3)
         driver.find_element(By.XPATH,'//div[@aria-label="Continue"]').click()
         print("continue")
-    except:
-            
-            pass
-    driver.implicitly_wait(5)
-    driver.get("https://m.facebook.com/confirmemail.php?soft=hjk")
-    print("confirm")
+    except: 
+        pass
     try:
-        didNotRecieved = driver.find_element(By.LINK_TEXT,"I Didn't Receive the Code")
-        didNotRecieved.click()
-        sendcodeagain = driver.find_element(By.LINK_TEXT,"Send Code Again")
-        sendcodeagain.click()
+        driver.implicitly_wait(5)
+        driver.find_element(By.XPATH,'//button[@value="Send code"]').click()
+    except:
+        pass
+    try:
         didNotRecieved = driver.find_element(By.LINK_TEXT,"I Didn't Receive the Code")
         didNotRecieved.click()
     except:
         try:
             didNotRecieved = driver.find_element(By.LINK_TEXT,"I didn't get the code")
             didNotRecieved.click()
-            sendcodeagain = driver.find_element(By.LINK_TEXT,"Send Code Again")
-            sendcodeagain.click()
-            didNotRecieved = driver.find_element(By.LINK_TEXT,"I didn't get the code")
-            didNotRecieved.click()
         except:
-                
             driver.quit()
             return  
     confirmbyemail= driver.find_element(By.XPATH,'//a[@class="_6if8 _8x0i _8xqj _8x0k" and @href="/changeemail/" and @target="_self" and @sigil="no_mpc"]')
@@ -207,3 +200,9 @@ def Create():
     driver.quit()
     return
 Create()
+"""
+//div[@aria-label="Not now"]
+//div[contains(text(),"OK")]
+//div[@aria-label="Skip"]
+//span[contains(text(),"Skip")]
+"""
