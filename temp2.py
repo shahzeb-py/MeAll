@@ -142,9 +142,12 @@ def Create():
             
         driver.quit()
         return 
-    
-    savelogin=driver.find_element(By.XPATH,'//div[@aria-label="Save"]')
-    savelogin.click()
+    driver.implicitly_wait(2)
+    try:
+        savelogin=driver.find_element(By.XPATH,'//div[@aria-label="Save"]')
+        savelogin.click()
+    except:
+        pass
     agreeterms=driver.find_element(By.XPATH,'//div[@aria-label="I agree"]')
     agreeterms.click()
     timee =random.randint(6,8)
@@ -156,7 +159,7 @@ def Create():
         driver.quit()
         return
     try:
-        driver.implicitly_wait(3)
+
         driver.find_element(By.XPATH,'//div[@aria-label="Continue"]').click()
         print("continue")
     except: 
