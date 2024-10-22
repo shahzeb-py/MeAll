@@ -31,7 +31,7 @@ month = ['1', '2', '3', '4', '5', '6', '7','8', '9', '10', '11', '12']
 year = ['1998','1999','1997','2000','2001']
 
 def UserAgentss():
-    user_agents =["Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Mobile Safari/537.36"]
+    user_agents =["Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Mobile Safari/537.36"]
     current_user_agent =random.choice(user_agents)
     return current_user_agent
 def generate_random_indian_number_with_country_code():
