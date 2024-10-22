@@ -87,7 +87,9 @@ def Create():
         yr = random.choice(year)
         driver = webdriver.Firefox(service=service, options=firefox_options)
         #driver = webdriver.Firefox(options=firefox_options)
+        driver.save_screenshot(f'/sdcard/screenshot{random_number}.png')
         driver.get("https://m.facebook.com/reg/#")
+        driver.save_screenshot(f'/sdcard/screenshot{random_number}.png')
         try:
             driver.implicitly_wait(6)
             GetStarted= driver.find_element(By.XPATH,'//div[@aria-label="Get Started" and @role="button"]')
